@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Simples</title>
+<style>
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background-color: #f0f4f8; max-width: 600px; margin: 50px auto; padding: 20px; }
+h1 { color: #2c3e50; text-align: center; }
+.card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+label { display: block; margin: 15px 0 5px; font-weight: bold; color: #34495e; }
+input { width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 5px; font-size: 16px; }
+button { background-color: #3498db; color: white; border: none; padding: 12px 25px; font-size: 16px; border-radius: 5px; cursor: pointer; margin-top: 20px; width: 100%; }
+button:hover { background-color: #2980b9; }
+#resultado { margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-radius: 5px; font-size: 18px; color: #2c3e50; text-align: center; }
+.erro { color: #e74c3c; background-color: #fdecea; }
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Calculadora de Soma</h1>
+<form>
+<label>Digite o primeiro número:</label>
+<input type="text" id="num1" placeholder="Ex: 10">
+<label>Digite o segundo número:</label>
+<input type="text" id="num2" placeholder="Ex: 5">
+<button type="button" onclick="calcularSoma()">Calcular</button>
+</form>
+<div id="resultado">O resultado aparecerá aqui </div>
+</div>
+<script>
+let totalCalculos = 0;
+function calcularSoma() {
+const valor1 = document.getElementById('num1').value;
+const valor2 = document.getElementById('num2').value;
+const resultado = document.getElementById('resultado');
+if (!valor1 || !valor2) {
+resultado.innerHTML = '⚠️ Preencha os dois campos!';
+resultado.className = 'erro';
+return;
+}
+const n1 = parseFloat(valor1);
+const n2 = parseFloat(valor2);
+if (isNaN(n1) || isNaN(n2)) {
+resultado.innerHTML = '❌ Digite apenas números!';
+resultado.className = 'erro';
+return;
+}
+const soma = n1 + n2;
+totalCalculos++;
+resultado.innerHTML = ✅ ${n1} + ${n2} = &lt;strong&gt;${soma}</strong><br><small>Calculos: ${totalCalculos}&lt;/small>;
+resultado.className = '';
+}
+</script>
+</body>
+</html>
